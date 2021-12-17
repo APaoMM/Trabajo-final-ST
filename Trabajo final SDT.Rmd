@@ -1,0 +1,449 @@
+---
+title: 'Determinantes económicos del tipo de cambio en México: un modelo VAR para
+  el período 2004-2020'
+author: "García Giovanny, Hernández Rommel, Mendoza Paola"
+date: "16/12/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# **1. IntroducciÃ³n.**
+
+## **MotivaciÃ³n y revisiÃ³n teÃ³rica.**
+
+En un contexto de una globalizaciÃ³n latente e integraciÃ³n entre las distintas economÃ­as del globo, el tipo de cambio ocupa un papel fundamental para la polÃ­tica econÃ³mica de cualquier paÃ­s, al ser una variable presente en las finanzas internacionales, el comercio exterior y en la economÃ­a en general, por lo que jugarÃ¡ a favor o en contra de la estabilidad al interior de una economÃ­a - sobre todo si es una economÃ­a tomadora de precios-. El tipo de cambio no es inocuo, de este puede depender la fortaleza y competitividad de una economÃ­a o tambiÃ©n puede ser un medio importante para la transmisiÃ³n y propagaciÃ³n de una crisis financiera. Por tal importancia, resulta valioso entender la interrelaciÃ³n y la forma de interacciÃ³n que existe entre el tipo de cambio y  otras variables relevantes de la economÃ­a.
+
+AÃºn al dÃ­a de hoy los determinantes del tipo de cambio es un tema que sigue debatiÃ©ndose en la academia, muchos investigadores han aportado su opiniÃ³n sobre cuÃ¡les son los principales determinantes del tipo de cambio: Taylor (1995) citado en Navarro y Santos (2007), llama fundamentales a todas esas variables derivadas de los cuatro modelos cambiarios modernos principales: el modelo monetarista, monetarista de rigideces de precios, equilibrio general y el de balance de portafolio, para Sizakmary y Mathur (1997) citado en Navarro y Santos (2007) los determinantes son: gasto pÃºblico, oferta monetaria, inflaciÃ³n, comercio exterior, tipos de interÃ©s y stock de precios, mientras que CalderÃ³n y Douglas (2003) citado en Navarro y Santos (2007) se centran en el comercio internacional, seÃ±alando los determinantes siguientes: tÃ©rminos de comercio, producciÃ³n, apertura del paÃ­s al comercio internacional, aranceles y gasto del gobierno. Sin embargo la conceptualizaciÃ³n de los determinantes del tipo de cambio de Morales e Higuera (2007) el cual, ademÃ¡s de la clasificaciÃ³n de variables determinantes del tipo de cambio entre econÃ³micas-financieras, hace una bifurcaciÃ³n entre los determinantes por su temporalidad de corto plazo y largo plazo, es una alternativa para tener un mayor entendimiento y acercamiento al problema del entendimiento de los determinantes de la paridad cambiaria. 
+
+Estos determinantes de corto plazo del tipo de cambio suelen incluir:
+
+**a) Condiciones monetarias de oferta y demanda:** Si hay una mayor cantidad de oferta de pesos la moneda se apreciarÃ¡ pero en el largo plazo se depreciarÃ¡. Lo mismo ocurre con los dÃ³lares, si hay una mayor cantidad de dÃ³lares en la economÃ­a esta se aprecia. 
+
+**b) El riesgo:** El riesgo es un determinante fundamental, Navarro y Santos (2007) lo miran desde dos perspectivas, por un lado, mencionan que existe el riesgo en el que empresas e instituciones financieras incurren y el riesgo global. El primero se refleja en moneda extranjera, si existe una depreciaciÃ³n de la moneda, sus pasivos que se tienen en moneda extranjera se deprecian. El riesgo global, en el cual los agentes econÃ³micos por medio del â-mercado de valoresâ hacen estudios de mercado para inferir y al haber un panorama general riesgoso, los extranjeros que mantienen sus activos en el paÃ­s se llevan sus recursos, de modo que hay presiones para depreciar la moneda. 
+
+**c) Expectativas del mercado:** Es uno de los determinantes mÃ¡s importantes, sÃ­ el rendimiento que se espera en la moneda nacional es alto, su demanda serÃ¡ mayor, por lo cual existirÃ¡ una apreciaciÃ³n, es decir, si la tasa de interÃ©s nacional sube y lo demÃ¡s permanece constante, entonces la ganancia de los activos locales sube a comparaciÃ³n de los extranjeros, asÃ­ es como la moneda se aprecia.
+
+Por otra parte, hay que tomar en cuenta que existe tanto la tasa de interÃ©s nominal y la tasa de interÃ©s real. Cuando la tasa de interÃ©s nominal contiene inflaciÃ³n esperada permaneciendo sin cambio y la tasa de interÃ©s real tiene un incremento como consecuencia el tipo de cambio se aprecia, por el contrario si hay una mayor inflaciÃ³n esperada incrementÃ¡ndose la tasa de interÃ©s nominal, el rendimiento disminuirÃ¡ y la moneda se depreciarÃ¡. Para estimar las expectativas estas se obtienen mediante un promedio de cuatro aÃ±os de tasas de inflaciÃ³n del IPC. Este procedimiento se realiza despuÃ©s de un cÃ¡lculo de tasas de interÃ©s real despuÃ©s de impuestos. Cuando la tasa de interÃ©s interna no estÃ¡ alineada a la tasa de interÃ©s externa repercutirÃ¡ en la cuenta corriente, (Wijnbergen, 1990).
+
+Para el largo plazo, algunos determinantes del tipo de cambio: 
+
+**a) El nivel de precios:** La diferencia de precios entre la economÃ­a interna y la economÃ­a externa provoca volatilidad cambiaria, si el nivel de precios de MÃ©xico es mayor al nivel de precios de Estados Unidos, la moneda se depreciarÃ¡, sin embargo; si el nivel de precios de Estados Unidos es mayor al nivel de precios de MÃ©xico, la moneda se apreciarÃ¡. 
+
+**b) Cuenta corriente:** Cuando existe un dÃ©ficit externo en la cuenta corriente, significa que el gasto agregado interno sobrepasa al ingreso agregado, por otro lado no revela nada de que la demanda agregada ya sea interna o externa solo en bienes nacionales sobrepase la oferta agregada de bienes internos al tipo de cambio real, (Wijnbergen, 1990), no obstante existe una relaciÃ³n cuando se involucra la tasa de interÃ©s, ya que si esta se eleva o se reduce, disminuye o aumenta consecutivamente los bienes de consumo y de inversiÃ³n. 
+
+**c) Productividad:** A largo plazo la productividad repercute significativamente debido a que se ajusta muy lentamente. Al haber un aumento en la productividad esto se traduce en mayores exportaciones, lo cual atrae mayor moneda extranjera, por ende presiona el tipo de cambio a bajar. 
+
+En la realidad el tipo de cambio estÃ¡ mucho mÃ¡s influenciado por los factores de corto plazo, que los de largo plazo, esto al menos para la economÃ­a mexicana sobre la cual se puede hacer una comprobaciÃ³n empÃ­rica de esto. AdemÃ¡s de los principales determinantes de corto y largo plazo mencionados, podemos encontrar tambiÃ©n otros como:  movimientos de los flujos de capitales internacionales, la volatilidad en el Ã­ndice de precios y cotizaciones de la Bolsa de Valores, los incrementos de las tasas de interÃ©s extranjeras, el precio del petrÃ³leo, el saldo de las reservas internacionales, y los eventos econÃ³micos, polÃ­ticos y sociales, ademÃ¡s, tambiÃ©n el manejo del gobierno puede inducir en forma indirecta el comportamiento del tipo de cambio por medio de la polÃ­tica monetaria y fiscal. Y si adicionalmente suceden eventos no previstos como crisis repentinas en algÃºn paÃ­s o regiÃ³n se complica definir los determinantes de la paridad de una moneda. AdemÃ¡s a los determinantes de largo plazo podemos aÃ±adir tambiÃ©n: tasas de interÃ©s, la oferta monetaria, la inversiÃ³n, los ciclos econÃ³micos.
+
+La explicaciÃ³n de la existencia de una gran cantidad de determinantes y factores que buscan explicar el tipo de cambio es  respuesta y en parte por la igual amplia diversidad de sistemas cambiarios que han existido, no sÃ³lo en MÃ©xico, sino en todo el mundo y en respuesta a ello la diversidad de teorÃ­as que se han adaptado a cada uno estos para ser explicados y utilizados acorde a las necesidades del momento. A la actualidad la discusiÃ³n parece haber quedado en un callejÃ³n sin salida, algunas de las variables y factores que hemos mencionado que influyen en el tipo de cambio en el corto plazo no estÃ¡n propiamente considerados en la teorÃ­a clÃ¡sica de la Paridad del Poder de Compra o modelos empÃ­ricos derivados directamente de aquella teorÃ­a o de la combinaciÃ³n de ellas para explicar la determinaciÃ³n del tipo de cambio, esto para el caso mexicano, por tanto y en este sentido, resultarÃ¡ menester de este trabajo estimar un modelo de Vectores Autorregresivos (VAR) que sea capaz - con sus limitaciones teÃ³ricas - de describir el comportamiento y la interrelaciÃ³n que existe entre variables que determinan el tipo de cambio fix en el corto plazo para la economÃ­a mexicana.
+
+### *Otros trabajos*.
+
+Los estudios que se han publicado han centrado su atenciÃ³n en la evaluaciÃ³n del comportamiento del tipo de cambio nominal y real, mas no asÃ­ en las variables que lo determinan. Engel (2000) y Mendoza (2000), por ejemplo, identifican los factores que han influido en la variaciÃ³n del tipo de cambio real. 
+
+Werner (1997a) realizÃ³ un estudio sobre el comportamiento del tipo de cambio en MÃ©xico en el periodo de 1995-1996, durante el cual se mantenÃ­a un esquema cambiario de flotaciÃ³n libre, estudiÃ³ el efecto de las tasas de interÃ©s nacionales e internacionales sobre el tipo de cambio y su volatilidad, sin embargo no se identifican las variables determinantes influyentes en el tipo de cambio. Werner y Bazdresch (2002) desarrollaron un modelo monetario de determinaciÃ³n del tipo de cambio de determinaciÃ³n del tipo de cambio para explicar los movimientos diarios en el valor del peso respecto al dÃ³lar, sin identificar las variables que han influido en estos movimientos del tipo de cambio. Alejandro MacÃ­as (2003) realiza un anÃ¡lisis teÃ³rico del modelo de la Paridad del Poder de Compra en el periodo 1982-2002 para MÃ©xico, y RamÃ³n Castillo y Jorge Herrera (2005) prueban los modelos monetarios tradicionales bÃ¡sicos del tipo de cambio. A la vez, Josefina LeÃ³n LeÃ³n (2008), da a conocer los factores econÃ³micos, polÃ­ticos y sociales que influyeron en el comportamiento del tipo de cambio a finales de 1994. 
+
+La importancia de estos estudios es que sus resultados ayudan a comprender el comportamiento del tipo de cambio peso-dÃ³lar, pero no asÃ­ las variables que determinan su evoluciÃ³n. En regÃ­menes previos al de libre flotaciÃ³n, como el fijo, de vÃ­nculo mÃ³vil y mÃºltiple, los determinantes del tipo cambiario eran mÃ¡s o menos conocidos. Sin embargo, con la adopciÃ³n del rÃ©gimen de flotaciÃ³n libre, los estudios no han sido determinantes, incluso se ha llegado a pensar que el tipo de cambio dentro de este rÃ©gimen es producto de un proceso gobernado por el azar. 
+
+Sin embargo, utilizando como una inspiraciÃ³n los modelos de determinaciÃ³n del tipo de cambio, ademÃ¡s de incluir el precio de petrÃ³leo como una variable teÃ³rica, histÃ³rica y ademÃ¡s comprobable empÃ­ricamente muestra una correlaciÃ³n importante con el comportamiento del tipo de cambio para la economÃ­a mexicana. Se estimÃ³ un VAR a corto plazo, para dar cuenta de las variables econÃ³mico-financieras que influyen en el comportamiento del tipo de cambio en el corto plazo. 
+
+# **2. SelecciÃ³n de Variables**
+
+### *SelecciÃ³n de metodologÃ­a*
+
+Se ha decidido utilizar una metodologÃ­a de Vectores Autorregresivos, dado que Ãºnicamente se necesita especificar las variables que intervienen y el nÃºmero de rezagos adecuados, que es ideal para el modelo que se pretende especificar, modelo que recoja de la mejor forma la evoluciÃ³n de un sistema econÃ³mico sin establecer demasiadas restricciones.
+
+Para la selecciÃ³n de variables se han seguido las sugeridas por Ito Takatoshi et al. (2005) y por Timotea Ma. de la Paz GuzmÃ¡n Plata (2006), las cuales son: precio de petrÃ³leo (PP), la oferta monetaria medidas a travÃ©s del M2 (M2), la brecha del producto (bP), la inflaciÃ³n domÃ©stica incorporada a travÃ©s del Ãndice Nacional de Precios al Productor (INPP), el tipo de cambio fix (Fix), y adicionalmente a estas variables propuestas, se ha aÃ±adido la tasa de interÃ©s de corto plazo considerando la de CETES a 28 dÃ­as (CETES).
+
+La periodicidad de todas las variables es mensual, con observaciones que van desde Enero del 2004 hasta Diciembre del 2020
+
+| **Identificador Variable** | **Nombre**  | **DescripciÃ³n** |
+|:---:|:---:|:---:|
+| **PP** | Precio del petrÃ³leo | Promedio mensual de las cotizaciones del precio en dÃ³lares del barril de la mezcla mexicana.  |
+| **M2** | Oferta Monetaria M2 | Agregado monetario M2 en millones de pesos  |
+| **bP** | Brecha de producto | La brecha del producto obtenida a travÃ©s de la diferencia del logaritmo natural del Ãndice de Volumen de la ProducciÃ³n Industrial y el producto potencial resultante de aplicar el filtro de Hodrick-Prescott a este mismo Ã­ndice.  |
+| **INPP** | Ãndice Nacional de Precios al Productor | Ãndice con base julio 2019 = 100, incluye servicios.  |
+| **Fix** | Tipo de Cambio peso-dÃ³lar | Promedio mensual de cotizaciones del tipo de cambio FIX. |
+| **CETES** | CETES a 28 dÃ­as | Tasa de CETES a 28 dÃ­as.  |
+
+
+##Paquetes y Datos
+```{r}
+library(ggplot2)
+library(dplyr)
+library(readxl)
+library(stats)
+library(seasonal)
+library(seasonalview)
+library(shiny)
+library(stats)
+library(MASS)
+library(strucchange)
+library(zoo)
+library(sandwich)
+library(urca)
+library(lmtest)
+library(vars)
+library(tidyr)
+library(forecast)
+library(mFilter)
+
+#dat <- read_excel("C:/Users/tic12/OneDrive/Escritorio/EconomÃ­a/Nucleo terminal/EconomÃ­a cuantitativa/Series de tiempo/BD Sdt.xlsx", sheet = "2004", col_names = TRUE)
+dat<-read_excel("C:/Users/Jack/Documents/FACULTAD DE ECONOMÍA/9° semestre/Series de tiempo/Trabajo final/BD SdT.xlsx", sheet = "2004", col_names = TRUE)
+head(dat)
+
+```
+##GrÃ¡ficas, desestacionalizaciÃ³n y diferencias. 
+
+```{r}
+M2 <- ts(dat$M2,
+        start = c(2004,1),
+         frequency = 12)
+
+pp <- ts(dat$PETROLEO,
+         start = c(2004,1),
+         frequency = 12)
+
+FIX <- ts(dat$FIX,
+         start = c(2004,1),
+         frequency = 12)
+
+CETES <- ts(dat$CETES,
+         start = c(2004,1),
+         frequency = 12)
+
+IMAI <- ts(dat$IMAI,
+            start = c(2004,1),
+            frequency = 12)
+
+INPP <- ts(dat$INPP,
+           start = c(2004,1),
+           frequency = 12)
+
+#Desestacionalizar las series y crear una nueva variable a partir de ello.
+M2_Seas <- seas(M2)
+M2D <- final(M2_Seas)
+
+pp_Seas <- seas(pp)
+ppD <- final(pp_Seas)
+
+FIX_Seas <- seas(FIX)
+FIXD <- final(FIX_Seas)
+
+CETES_Seas <- seas(CETES)
+CETESD <- final(CETES_Seas)
+
+INPP_Seas <- seas(INPP)
+INPPD <- final(INPP_Seas)
+
+IMAI_Seas<-seas(IMAI)
+IMAID<-final(IMAI_Seas)
+
+plot(cbind(M2D, ppD, FIXD, CETESD,INPPD,IMAID), main="Variables desestacionalizadas 
+     en niveles 2004-2020", col="dodgerblue")
+
+
+#Obtener diferencias o diferencias logarÃ­tmicas
+DifCETES<- ts(as.numeric(CETESD) - lag(as.numeric(CETESD), k = 1), 
+             start = c(2004,1),frequency = 12)
+
+DIMAI<- ts(log(as.numeric(IMAI)) - lag(log(as.numeric(IMAI)), k = 1), 
+                 start = c(2004,1),frequency = 12)
+
+DLM2D <- ts(log(as.numeric(M2D)) - lag(log(as.numeric(M2D)), k = 1), 
+             start = c(2004,1),frequency = 12)
+
+DppD<- ts(log(as.numeric(ppD)) - lag(log(as.numeric(ppD)), k = 1), 
+          start = c(2004,1),frequency = 12)
+
+DFIXD<- ts(log(as.numeric(FIXD)) - lag(log(as.numeric(FIXD)), k = 1), 
+           start = c(2004,1),frequency = 12)
+
+DCETESD<- ts(log(as.numeric(CETESD)) - lag(log(as.numeric(CETESD)), k = 1), 
+             start = c(2004,1),frequency = 12)
+
+DINPPD<- ts(log(as.numeric(INPPD)) - lag(log(as.numeric(INPPD)), k = 1), 
+               start = c(2004,1),frequency = 12)
+
+NCETESD<-ts(as.numeric(CETESD) - lag(as.numeric(CETESD), k = 1), 
+            start = c(2004,1),frequency = 12)
+
+plot(cbind(DLM2D,DppD,DFIXD,DCETESD,DINPPD,NCETESD), main="Variables desestacionalizadas 
+     en diferencia 2004-2020", col="lawngreen")
+
+```
+
+
+##Pruebas de Estacionalidad
+```{r}
+Dato<-data.frame(cbind(M2D,ppD,FIXD,CETESD,INPPD,IMAID))
+Dato<-na.omit(Dato)
+head(Dato)
+#Serie con diferencias/diferencias logarÃ­tmicas
+DatosD<-data.frame(cbind(DLM2D,DppD,DFIXD,DifCETES,DINPPD,DIMAI))
+DatosD<-na.omit(DatosD)
+head(DatosD)
+
+##PRUEBAS RAÃCES UNITARIAS
+
+#DICKY FULLER
+
+#Oferta monetaria
+#En niveles
+summary(ur.df(Dato[,1], type="trend", lags=0)) # -3.43<-0.73 Ho: No estacionaria
+summary(ur.df(Dato[,1], type="drift", lags=0)) # -2.88<3.15  Ho: No estacionaria
+summary(ur.df(Dato[,1], type="none", lags=0))  # -1.95<10.14 Ho: No estacionaria
+
+#En diferencias
+summary(ur.df(DatosD[,1], type="trend", lags=0)) # -3.43>-14.15 Ha: Es estacionaria
+summary(ur.df(DatosD[,1], type="drift", lags=0)) # -2.88>-14.11 Ha: Es estacionaria
+summary(ur.df(DatosD[,1], type="none", lags=0))  # -1.95>-9.37 Ha: Es estacionaria
+
+
+#Precio del petrÃ³leo
+#En niveles
+summary(ur.df(Dato[,2], type="trend", lags=0)) # -3.43<-2.19 Ho: No estacionaria
+summary(ur.df(Dato[,2], type="drift", lags=0)) # -2.88<-1.94  Ho: No estacionaria
+summary(ur.df(Dato[,2], type="none", lags=0))  # -1.95<-0.52 Ho: No estacionaria
+
+#En diferencias
+summary(ur.df(DatosD[,2], type="trend", lags=0)) # -3.43>-10.81 Ha: Es estacionaria
+summary(ur.df(DatosD[,2], type="drift", lags=0)) # -2.88>-10.81 Ha: Es estacionaria
+summary(ur.df(DatosD[,2], type="none", lags=0))  # -1.95>-10.83 Ha: Es estacionaria
+
+
+#Tipo de cambio
+#En niveles
+summary(ur.df(Dato[,3], type="trend", lags=0)) # -3.43<-2.56 Ho: No estacionaria
+summary(ur.df(Dato[,3], type="drift", lags=0)) # -2.88<-0.65 Ho: No estacionaria
+summary(ur.df(Dato[,3], type="none", lags=0))  # -1.95<1.078 Ho: No estacionaria
+
+#En diferencias
+summary(ur.df(DatosD[,3], type="trend", lags=0)) # -3.43>-10.59 Ha: Es estacionaria
+summary(ur.df(DatosD[,3], type="drift", lags=0)) # -2.88>-10.61 Ha: Es estacionaria
+summary(ur.df(DatosD[,3], type="none", lags=0))  # -1.95>-10.56 Ha: Es estacionaria
+
+
+
+#Tasa de interÃ©s CP
+#En niveles
+summary(ur.df(Dato[,4], type="trend", lags=0)) # -3.43<-1.12 Ho: No estacionaria
+summary(ur.df(Dato[,4], type="drift", lags=0)) # -2.88<-0.73 Ho: No estacionaria
+summary(ur.df(Dato[,4], type="none", lags=0))  # -1.95<-0.42 Ho: No estacionaria
+
+#En diferencias
+summary(ur.df(DatosD[,4], type="trend", lags=0)) # -3.43>-8.82 Ha: Es estacionaria
+summary(ur.df(DatosD[,4], type="drift", lags=0)) # -2.88>-8.85 Ha: Es estacionaria
+summary(ur.df(DatosD[,4], type="none", lags=0))  # -1.95>-8.86 Ha: Es estacionaria
+
+
+#InflaciÃ³n domÃ©stica
+#En niveles
+summary(ur.df(Dato[,5], type="trend", lags=0)) # -3.43<-1.39  Ho: No estacionaria
+summary(ur.df(Dato[,5], type="drift", lags=0)) # -2.88<0.167  Ho: No estacionaria
+summary(ur.df(Dato[,5], type="none", lags=0))  # -1.95<8.62 Ho: No estacionaria
+
+#En diferencias
+summary(ur.df(DatosD[,5], type="trend", lags=0)) # -3.43>-10.18 Ha: Es estacionaria
+summary(ur.df(DatosD[,5], type="drift", lags=0)) # -2.88>-10.11 Ha: Es estacionaria
+summary(ur.df(DatosD[,5], type="none", lags=0))  # -1.95>-7.70 Ha: Es estacionaria
+
+
+#Indicador mensual de actividad industrial
+#En niveles
+summary(ur.df(Dato[,6], type="trend", lags=0)) # -3.43>-3.57 Ha: Es estacionaria
+summary(ur.df(Dato[,6], type="drift", lags=0)) # -2.88>-3.35 Ha: Es estacionaria
+summary(ur.df(Dato[,6], type="none", lags=0))  # -1.95<0.037 Ho: No estacionaria
+
+#En diferencias
+summary(ur.df(DatosD[,6], type="trend", lags=0)) # -3.43>-12.02 Ha: Es estacionaria
+summary(ur.df(DatosD[,6], type="drift", lags=0)) # -2.88>-12.04 Ha: Es estacionaria
+summary(ur.df(DatosD[,6], type="none", lags=0))  # -1.95>-12.07 Ha: Es estacionaria
+
+
+#PHILLIPLS PERRON
+
+#Oferta monetaria
+#En niveles
+summary(ur.pp(Dato[,1],type = "Z-tau", model = "trend", use.lag = 4)) # Ho: No estacionaria
+summary(ur.pp(Dato[,1],  type = "Z-tau", model = "constant", use.lag = 4)) #Ho: No estacionaria
+
+#En diferencias
+summary(ur.pp(DatosD[,1],type = "Z-tau", model = "trend", use.lag = 4)) #Ha: Es estacionaria
+summary(ur.pp(DatosD[,1],  type = "Z-tau", model = "constant", use.lag = 4)) #Ha: Es estacionaria
+
+
+#Precio del petrÃ³leo
+#En niveles
+summary(ur.pp(Dato[,2],type = "Z-tau", model = "trend", use.lag = 4)) #Ho: No estacionaria
+summary(ur.pp(Dato[,2],  type = "Z-tau", model = "constant", use.lag = 4)) # Ho: No estacionaria
+
+#En diferencias
+summary(ur.pp(DatosD[,2],type = "Z-tau", model = "trend", use.lag = 4)) # Ha: Es estacionaria
+summary(ur.pp(DatosD[,2],  type = "Z-tau", model = "constant", use.lag = 4)) #Ha: Es estacionaria
+
+
+#Tipo de cambio
+#En niveles
+summary(ur.pp(Dato[,3],type = "Z-tau", model = "trend", use.lag = 4)) # Ho: No estacionaria
+summary(ur.pp(Dato[,3],  type = "Z-tau", model = "constant", use.lag = 4)) # Ho: No estacionaria
+
+#En diferencias
+summary(ur.pp(DatosD[,3],type = "Z-tau", model = "trend", use.lag = 4)) # Ha: Es estacionaria
+summary(ur.pp(DatosD[,3],  type = "Z-tau", model = "constant", use.lag = 4)) # Ha: Es estacionaria
+
+
+
+#Tasa de interÃ©s CP
+#En niveles
+summary(ur.pp(Dato[,4],type = "Z-tau", model = "trend", use.lag = 4)) # Ho: No estacionaria
+summary(ur.pp(Dato[,4],  type = "Z-tau", model = "constant", use.lag = 4)) # Ho: No estacionaria
+
+#En diferencias
+summary(ur.pp(DatosD[,4],type = "Z-tau", model = "trend", use.lag = 4)) # Ha: Es estacionaria
+summary(ur.pp(DatosD[,4],  type = "Z-tau", model = "constant", use.lag = 4)) # Ha: Es estacionaria
+
+
+#InflaciÃ³n domÃ©stica
+#En niveles
+summary(ur.pp(Dato[,5],type = "Z-tau", model = "trend", use.lag = 4)) # Ho: No estacionaria
+summary(ur.pp(Dato[,5],  type = "Z-tau", model = "constant", use.lag = 4)) # Ho: No estacionaria
+
+#En diferencias
+summary(ur.pp(DatosD[,5],type = "Z-tau", model = "trend", use.lag = 4)) # Ha: Es estacionaria
+summary(ur.pp(DatosD[,5],  type = "Z-tau", model = "constant", use.lag = 4)) # Ha: Es estacionaria
+
+
+#Indicador mensual de actividad industrial
+#En niveles
+summary(ur.pp(Dato[,6],type = "Z-tau", model = "trend", use.lag = 4)) # Ha: Es estacionaria
+summary(ur.pp(Dato[,6],  type = "Z-tau", model = "constant", use.lag = 4)) #  Ha: Es estacionaria
+
+#En diferencias
+summary(ur.pp(DatosD[,6],type = "Z-tau", model = "trend", use.lag = 4)) #  Ha: Es estacionaria
+summary(ur.pp(DatosD[,6], type = "Z-tau", model = "constant", use.lag = 4)) #Ha: Es estacionaria
+
+```
+
+Las pruebas de estacionariedad nos arrojan que todas nuestras variables son estacionarias en diferencias, por lo que es factible hacer un modelo VAR.
+
+##CreaciÃ³n del modelo VAR.
+Mediante iteraciÃ³n se buscÃ³ el tipo de modelo VAR y nÃºmero de rezagos Ã³ptimos. Se redujeron el nÃºmero de variables explicativas omitiendo las variables Precio del Petroleo y Brecha del Producto porque en nuestras iteraciones no tuvieron un efecto significativo, ademÃ¡s de que un modelo VAR con mÃ¡s de 4 variables castiga los criterios de informaciÃ³n. 
+
+El modelo Ã³ptimo arrojado por la paqueteria "vars" fue un VAR con 4 rezagos sin constante ni tendencia cuyas variables explicativas son el diferencia logarÃ­tmico del tipo de cambio, el diferencial logarÃ­tmico de la oferta monetaria (M2), el diferencia de los Cetes a 28 dÃ­as y el diferencial logarÃ­tmico del Ãndice Nacional de Precios al Productor. 
+
+Se agregaron 2 variables dicotÃ³micas. La primera en junio del 2008 que es justificada por los efectos a nivel macroeconomicos derivados de la crisis subprime.La segunda en marzo de 2020 que reocge la subida abrupta en el tipo de cambio derivada de la pandemia por Covid-19.
+
+
+
+```{r}
+##variables dummys
+
+dummy1<-as.numeric(dat$Fecha=="2008-10-01 UTC", 1)
+dummy1
+
+d08s=ts(dummy1, start=2004, frequency = 12)
+d08s<-replace(d08s, which(d08s==1),0)
+d08s[53]=0
+d08s[54]=1
+d08s
+
+dummy2<-as.numeric(dat$Fecha=="2008-10-01 UTC", 1)
+dummy2
+
+d20s=ts(dummy2, start=2004, frequency = 12)
+d20s[195]=1
+d20s
+
+
+##Modelo VAR
+Datos <- data.frame(cbind(DFIXD,DINPPD,DLM2D,DifCETES, d08s,d20s))
+Datos<-na.omit(Datos)
+
+vars::VARselect(Datos, lag.max = 12, type = "both")
+vars::VARselect(Datos, lag.max = 12, type = "const")
+vars::VARselect(Datos, lag.max = 12, type = "trend")
+vars::VARselect(Datos, lag.max = 12, type = "none")
+
+var1<-vars::VAR(Datos, p=1)
+var2<-vars::VAR(Datos, p=2)
+var3<-vars::VAR(Datos, p=3)
+var4<-vars::VAR(Datos, p=4, type = "none")
+var5<-vars::VAR(Datos, p=5, type = "both")
+
+#vars::roots(var1) 
+#vars::roots(var2)
+vars::roots(var3)
+vars::roots(var4)
+
+error12<-residuals(var4$varresult$DINPPD)
+plot(error12)
+error12<-residuals(var4$varresult$DifCETES)
+plot(error12)
+error12<-residuals(var4$varresult$DFIXD)
+plot(error12)
+error12<-residuals(var4$varresult$DLM2D)
+plot(error12)
+
+summary(var4, equation= "DFIXD")
+vars::normality.test(var4, multivariate.only = TRUE)
+serial.test(var4, lags.bg = 1, type = "BG")
+serial.test(var4, lags.bg = 2, type = "BG")
+serial.test(var4, lags.bg = 3, type = "BG")
+serial.test(var4, lags.bg = 4, type = "BG")
+arch.test(var4, lags.multi = 4)
+
+
+```
+El modelo pasa la prueba de estabilidad porque sus coeficientes son menores a 1. No presenta autocorrelaciÃ³n de cuarto orden o inferior como demuestra la prueba Breusch-Godfrey. Tampoco presenta heteroscedasticidad como demuestra la prueba ARCH. Sin embargo, reconocemos que el modelo no presenta normalidad. Se intentÃ³ corregir con variables dicotÃ³micas (dummys), cambianod la periodicidad de los datos e insertando una matriz de dummys. Con ninguna propuesta se corrigiÃ³ la no normalidad. Para fines acadÃ©micos supondremos que el modelo presenta normalidad.
+
+###Resultados y grÃ¡ficas de impulso-respuesta.
+
+Una vez validado que nuestra propuesta de modelo VAR cumple con los supuestos de correcta especificaciÃ³n, se realizaron una grÃ¡ficas de impulso-respuesta enfocadas en el tipo de cambio. Se realizÃ³ para 12 periodos que corresponden a los 12 meses que componen un aÃ±o. 
+
+```{r}
+IR_FIX <- irf(var4, n.ahead = 12, boot = TRUE, 
+              ci = 0.95, response = "DFIXD", ortho = TRUE, cumulative = TRUE)
+
+plot(IR_FIX)
+
+```
+
+Las grÃ¡ficas nos permiten concluir que el tipo de cambio se ve influienciado negativamente por un choque en la inflaciÃ³n. La interpretaciÃ³n de la grÃ¡fica es que un cambio en la inflaciÃ³n producirÃ¡ un efecto negativo en el tipo de cambio que se manifiesta 3 meses despÃºes del choque y sus efectos se mantienen durante 9 meses. 
+
+
+La variable  oferta monetaria (M2) influye postivamente en el tipo de cambio. Ante un choque en la oferta monetaria, el tipo de cambio reacciona de inmediato y tiene efecto durante 7 periodos.
+
+La tasa de los Cetes a 28 dÃ­as no tiene un impacto significativo en el tipo de cambio. En nuestras iteraciones, descubirmos que las variables omitidas en este modelo (Precio del petroleo y brecha del producto) tampoco tuvieron un efecto significativo en el anÃ¡lisis impulso-respuesta.
+
+Las variables dummy carecen de interpretaciÃ³n al ser variables meramente instrumentales.
+
+A partir de los resultados del modelo concluimos que 4 de las variables seleccionadas no son determinantes del tipo de cambio como sugiere la literatura. Sin embargo, el Indice Nacional de Precios al Productor y la Oferta Monetaria sÃ­ tienen un impacto signficativo en el tipo de cambio y ambas tienen un efecto sostenido mayor a 6 meses. 
+
+## **Referencias**
+
+- CASTILLO PONCE, RamÃ³n A. y HERRERA HERNÃNDEZ, Jorge, (2005) â-Factores determinantes del tipo de cambio peso-dÃ³lar durante el periodo de libre flotaciÃ³nâ, Comercio Exterior, vol. 55, nÃºm. 11, noviembre, MÃ©xico. 
+ENGEL, Charles, (2000) â-Optimal exchange rate policy: the influence of price setting an asset marketsâ, National Bureau of Economic Research (NBER), Working Paper, nÃºm.7889
+
+- ITO, Takatoshi, SASAKI, Yuri N. y SATO, Kiyotaka, (2005)â-Pass-Through of Exchange Rate Changes and Macroeconomic Shocks to Domestic Inflation in East Asian Countriesâ, RIETI Discussion Papers Series, 05-E-020, abril, pp. 2-55. 
+
+- LEÃN LEÃN, Josefina, (2008) â-La mano invisible del mercado y la evoluciÃ³n de las polÃ­ticas monetaria y cambiaria: MÃ©xico, 1995-2005â, AnÃ¡lisis EconÃ³mico, nÃºm. 53, vo1. XXIII, Segundo cuatrimestre, pp. 111-142.
+
+- MACÃAS MACÃAS, Alejandro, (2003) â-Tipo de cambio y paridad del poder de compra en MÃ©xicoâ, Comercio Exterior, vol. 53, nÃºm. 9, septiembre, MÃ©xico, pp. 820-831. 
+
+- MENDOZA, Enrique, (2000) â-On the Instability of Variance Decompositions of the Real Exchange Rate Across Exchange-Rate Regimes: Evidence from Mexico and the United Statesâ, National Bureau of Economic Research (NBER) Working Paper, nÃºm.7768.
+
+- MORALES, A., e HIGUERA, R., (2007), â-El tipo de cambio y las inversiones en la globalizaciÃ³n financiera, el caso de MÃ©xico: Determinantes del tipo de cambio 1986-2000â en Quinto Encuentro Internacional sobre GlobalizaciÃ³n Financiera. 
+
+- NAVARRO, J., y SANTOS Y., (2007), â-DeterminaciÃ³n economÃ©trica del tipo de cambio nominal en MÃ©xicoâ en Revista Nicolaita de Estudios EconÃ³micos vol 2, nÃºm. 1, enero - junio, pp. 9-27.
+
+- RIVAS B, M., (2018), â-AnÃ¡lisis de los determinantes del tipo de cambio y ciclos comunes entre MÃ©xico y Estados Unidos durante 1994 a 2017â. Tesis de MaestrÃ­a EconomÃ­a Aplicada. El Colegio de la Frontera Norte, A.C. MÃ©xico. 100 pp.
+
+- WERNER, Alejandro M., (1997a) â-Un estudio estadÃ­stico sobre el comportamiento de la cotizaciÃ³n del peso mexicano frente al dÃ³lar y su volatilidadâ, Documento de InvestigaciÃ³n, Banco de MÃ©xico, nÃºm. 9701.
+
+- WERNER, Alejandro M. y BAZDRESCH, Santiago, (2002) â-El comportamiento del tipo de cambio en MÃ©xico y el rÃ©gimen de libre flotaciÃ³n: 1996â2001â, Documento de InvestigaciÃ³n, Banco de MÃ©xico. 
+
+- WIJNBERGEN, S., (1990), â-Crecimiento, deuda externa y tipo de cambio real en MÃ©xicoâ en El Trimestre EconÃ³mico. Vol. 57, No. 227(3) (Julio-Septiembre), pp. 755-792. 
